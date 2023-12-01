@@ -1,0 +1,338 @@
+<!-- <div class="main-content">
+  <div class="container-fluid">
+    <div class="card">
+        <div class="card-header bg-primary">
+            <h4 class="card-title">Material Dashboard Heading</h4>
+            <p class="card-category">Created using Roboto Font Family</p>
+        </div>
+        <div class="card-body">
+            <div id="typography">
+                <div class="card-title">
+                    <h2>Typography</h2>
+                </div>
+                <div class="row">
+                    <div class="tim-typo">
+                        <h1>
+                            <span class="tim-note">Header 1</span>The Life of Material Dashboard </h1>
+                    </div>
+                    <div class="tim-typo">
+                        <h2>
+                            <span class="tim-note">Header 2</span>The Life of Material Dashboard</h2>
+                    </div>
+                    <div class="tim-typo">
+                        <h3>
+                            <span class="tim-note">Header 3</span>The Life of Material Dashboard</h3>
+                    </div>
+                    <div class="tim-typo">
+                        <h4>
+                            <span class="tim-note">Header 4</span>The Life of Material Dashboard</h4>
+                    </div>
+                    <div class="tim-typo">
+                        <h5>
+                            <span class="tim-note">Header 5</span>The Life of Material Dashboard</h5>
+                    </div>
+                    <div class="tim-typo">
+                        <h6>
+                            <span class="tim-note">Header 6</span>The Life of Material Dashboard</h6>
+                    </div>
+                    <div class="tim-typo">
+                        <p>
+                            <span class="tim-note">Paragraph</span>
+                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
+                    </div>
+                    <div class="tim-typo">
+                        <span class="tim-note">Quote</span>
+                        <blockquote class="blockquote">
+                            <p>
+                                I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.
+                            </p>
+                            <small>
+                                Kanye West, Musician
+                            </small>
+                        </blockquote>
+                    </div>
+                    <div class="tim-typo">
+                        <span class="tim-note">Muted Text</span>
+                        <p class="text-muted">
+                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...
+                        </p>
+                    </div>
+                    <div class="tim-typo">
+                        <span class="tim-note">Primary Text</span>
+                        <p class="text-primary">
+                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
+                    </div>
+                    <div class="tim-typo">
+                        <span class="tim-note">Info Text</span>
+                        <p class="text-info">
+                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
+                    </div>
+                    <div class="tim-typo">
+                        <span class="tim-note">Success Text</span>
+                        <p class="text-success">
+                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
+                    </div>
+                    <div class="tim-typo">
+                        <span class="tim-note">Warning Text</span>
+                        <p class="text-warning">
+                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...
+                        </p>
+                    </div>
+                    <div class="tim-typo">
+                        <span class="tim-note">Danger Text</span>
+                        <p class="text-danger">
+                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
+                    </div>
+                    <div class="tim-typo">
+                        <h2>
+                            <span class="tim-note">Small Tag</span>
+                            Header with small subtitle
+                            <br>
+                            <small>Use "small" tag for the headers</small>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-primary">
+                        <h4 class="card-title ">Les Evenements </h4>
+                        <p class="card-category">Ci-dessous les évènements disponibles </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th class="text-center">Titre</th>
+                                    <th>Club</th>
+                                    <th>Date</th>
+                                    <th>durée</th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let event of eventsAccepted ">
+                                        <td class="text-center">{{event.title}}</td>
+                                        <td> Club</td>
+                                        <td>{{event.date | date : "dd/MM/yyyy"}} </td>
+                                        <td >{{event.duration}} h</td>
+                                        <td class="text-center">
+                                            <a (click)="showDetailModal(event,false)" class="tooltip-test" title="Tooltip" data-toggle="modal" data-target="#detailModal"> details</a>
+                                            <a class="btn btn-primary me-2"  data-toggle="modal" data-target="#exampleModal">
+                                                <i class="fa fa-pencil"></i> 
+                                            </a>
+                                            <a (click)="deleteEvent(event.id)" class="btn btn-danger" >
+                                                <i class="fa fa-trash"></i> 
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header bg-primary">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h4 class="card-title mt-0">Les Demandes des Evenements</h4>
+                            <p class="card-category"> Ci-dessous les démandes des évènements des Clubs </p>
+                            <button *ngIf="isRespo()" (click)="resetModal()" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                              Demander
+                            </button>              
+                          </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>Titre</th>
+                                    <th>Club</th>
+                                    <th>Date</th>
+                                    <th>durée</th>
+                                    <th>Actions</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let event of demandes " >
+                                        <td>{{event.title}}</td>
+                                        <td> Club</td>
+                                        <td>{{event.date | date : "dd/MM/yyyy"}} </td>
+                                        <td >{{event.duration}} h</td>
+                                        <td class="text-center">
+                                            <a (click)="showDetailModal(event,true)" class="tooltip-test" title="Tooltip" data-toggle="modal" data-target="#detailModal"> details</a>
+                                            <a class="btn btn-primary me-2" (click)="showUpdateModal(event)" data-toggle="modal" data-target="#exampleModal">
+                                                <i class="fa fa-pencil"></i> 
+                                            </a>
+                                            <a (click)="deleteEvent(event.id)" class="btn btn-danger" >
+                                                <i class="fa fa-trash"></i> 
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- Modal Ajout -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajouter un Evènement</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="eventForm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                        <input formControlName="title" matInput placeholder="Titre " type="text">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                        <input formControlName="location" matInput placeholder="locale :" type="text">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div *ngIf="!showUpdateButton" class="col-md-12">
+                        <label for="">Clubs:</label>
+                        <select formControlName="clubs" name="domaine" class="form-control">
+                            <option *ngFor="let club of Clubs" [value]="club.id">{{club.name}}</option>
+                        </select>
+                    </div>
+                    <div *ngIf="showUpdateButton" class="col-md-12">
+                        <h4><u><b>Clubs</b></u> :</h4>
+                        <ul *ngFor="let club of clubs[event.id]">
+                            <li>{{club.name}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row"  *ngIf="afficherMateriel(event)">
+                    <h4><b><u>Matériels réservés</u></b> :</h4>
+                    <ul *ngFor="let materiel of event.materiels">
+                        <li>{{materiel.name}}</li>
+                    </ul>
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <mat-form-field class="example-full-width">
+                        <input formControlName="date" matInput placeholder="date" type="date">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field class="example-full-width">
+                        <input formControlName="duration" matInput placeholder="durée" type="number">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="">Salle : </label>
+                        <select formControlName="salle" name="domaine" class="form-control">
+                            <option *ngFor="let salle of salles" [value]="salle.id">{{salle.number}} - {{salle.location}}</option>
+                        </select>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label class="bmd-label-floating"> Décrire ici les activités de cet évènement , l'heure </label>
+                                <textarea formControlName="description" class="form-control" rows="5"></textarea>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <!-- <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>
+                 --><div class="clearfix"></div>
+                <div class="row" *ngIf="showUpdateButton">
+                    <div class="col-md-6">
+                        <label for="">Matériels : </label>
+                        <select formControlName="materiel" name="domaine" class="form-control">
+                            <option *ngFor="let mat of materiels" [value]="mat.id">{{mat.name}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <button *ngIf="showUpdateButton" type="submit" (click)="addMaterielToEvent()"  class="btn btn-warning"  data-dismiss="modal" >Ajouter Matériel</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="row" *ngIf="showUpdateButton">
+                    <div class="col-md-6">
+                        <select formControlName="club" name="domaine" class="form-control">
+                            <option *ngFor="let club of Clubs" [value]="club.id">{{club.name}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <button *ngIf="showUpdateButton" type="submit" (click)="addMateriel()"  class="btn btn-warning"  data-dismiss="modal" >Ajouter Club</button>
+                    </div>
+                </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button *ngIf="showUpdateButton" type="submit" (click)="updateEvent()" class="btn btn-primary"  data-dismiss="modal" [disabled]="eventForm.invalid">Modifier</button>
+          <button *ngIf="!showUpdateButton" type="submit" (click)="addEvent()" class="btn btn-primary"  data-dismiss="modal" [disabled]="eventForm.invalid">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal detail -->
+  <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title text-center text-primary" id="exampleModalLabel">{{event.title}}</h3>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="d-flex justify-content-center align-items-center">
+                <h5 class="d-inline mr-3"><u><b>Date</b></u>  : {{event.date | date : "dd MMMM yyyy"}}</h5>
+                <h5 class="d-inline" ><u><b>Durée</b></u>  : {{event.duration }} h</h5>
+            </div>
+            <hr>
+            <div>
+                <h4><u><b>Clubs</b></u> :</h4>
+                <ul *ngFor="let club of clubs[event.id]">
+                    <li>{{club.name}}</li>
+                </ul>
+            </div>
+            <hr>
+            <h4><u><b>Localisation</b></u> : {{event.location}}</h4>
+            <h4 *ngIf="event.salle"> <u><b>Salle N°</b></u>: {{event.salle.number}}</h4>
+            <hr>
+            <div *ngIf="afficherMateriel(event)">
+                <h4><b><u>Matériels réservés</u></b> :</h4>
+                <ul *ngFor="let materiel of event.materiels">
+                    <li>{{materiel.name}}</li>
+                </ul>
+                <hr>
+            </div>
+            <h4><u><b>A propos :</b></u> </h4>
+            <p>{{event.description}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button *ngIf="isAdmin() && boutonDemande" type="submit" (click)="accepterDemande(event.id)" class="btn btn-warning"  data-dismiss="modal">Accèpter</button>
+          <button *ngIf="isAdmin() && boutonDemande" type="submit" (click)="refuserDemande(event.id)" class="btn btn-danger"  data-dismiss="modal">Refuser</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>

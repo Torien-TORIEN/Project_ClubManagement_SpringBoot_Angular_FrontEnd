@@ -1,0 +1,77 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="card card-plain">
+          <div class="card-header bg-primary">
+            <div class="d-flex justify-content-between align-items-center">
+              <h4 class="card-title mb-0">Les Salles sont disponibles ci-dessous</h4>
+              <button *ngIf="isAdmin()" (click)="initializeModalButton()" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                Ajouter Salle
+              </button>              
+            </div>
+          </div>
+
+            <div class="row row-cols-3 g-4">
+              <div class="col" *ngFor="let salle of salles">
+                <div class="card">
+                  <div class="card-body">
+                    <h3 class="card-title text-center fw-bold">Numéro : {{salle.number}}</h3>
+                    <h3 class="card-title text-center fw-bold">Local : {{salle.location}}</h3>
+                    <p class="card-text text-center ">Description : {{salle.description}}</p>
+                    <div *ngIf="isAdmin()" class="d-flex justify-content-end">
+                      <a class="btn btn-primary me-2" (click)="showUpdateModal(salle)"  data-toggle="modal" data-target="#exampleModal">
+                          <i class="fa fa-pencil"></i> 
+                      </a>
+                      <a  class="btn btn-danger" (click)="removeSalle(salle.id)">
+                          <i class="fa fa-trash"></i> 
+                      </a>
+                  </div>                  
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form [formGroup]="SalleForm">
+                      <div class="form-group">
+                        <label for="numero">Numéro de la salle :</label>
+                        <input type="number" formControlName="numero"  class="form-control" id="numero" name="numero" [readonly]="showUpdateButton">
+                      </div>
+                      <div class="form-group">
+                        <label for="local">Local :</label>
+                        <select class="form-control" formControlName="location"  id="local" name="local">
+                          <option >Annexe</option>
+                          <option >Principal</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="description">Description :</label>
+                        <textarea class="form-control" formControlName="description"  id="description" name="description"></textarea>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <button *ngIf="showUpdateButton" type="submit" class="btn btn-primary" (click)="onUpdate()" data-dismiss="modal" [disabled]="SalleForm.invalid" >Modifier</button>
+                    <button *ngIf="!showUpdateButton" type="submit" class="btn btn-primary" (click)="onSubmit()" data-dismiss="modal" [disabled]="SalleForm.invalid">Enregistrer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+        </div>
+    </div>
+  </div>
+
+   
